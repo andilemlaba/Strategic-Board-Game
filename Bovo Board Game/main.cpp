@@ -11,10 +11,9 @@ int main(int argc, char *argv[]) {
     // initialize resources, if needed
     // Q_INIT_RESOURCE(resfile);
 
-    //QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     // create and show your widgets here
 
-cout << "Bovo" << endl;
-    //return app.exec();
+    return app.exec();
 }
