@@ -26,186 +26,187 @@ bool onBoard(const Position& p) {
 
 bool playAttackOrDefence(char symbol, Board& board, bool attack) {
     char opponent_symbol;
-    if (!attack){
+    if (!attack) {
         if (symbol == 'X') opponent_symbol = 'O';
         else opponent_symbol = 'X';
     }
-    /* check forward 3 in a row*/
+
+    /* check forward 5 in a row*/
     for (int i = 0; i < SIZE; i++) {//for all rows
-        for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 3 symbol matches in a horizontal line
+        for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 5 symbol matches in a horizontal line
             if (!attack) {
                 if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i, j + 1) == opponent_symbol)
-                    && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
-                    && (board.getPiece(i, j + 4) == ' ')) {
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == ' ')) {
                     board.setPiece(i, j + 4, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i, j + 1) == opponent_symbol)
-                    && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == ' ')
-                    && (board.getPiece(i, j + 4) == opponent_symbol)) {
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == ' ')
+                        && (board.getPiece(i, j + 4) == opponent_symbol)) {
                     board.setPiece(i, j + 3, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i, j + 1) == opponent_symbol)
-                    && (board.getPiece(i, j + 2) == ' ') && (board.getPiece(i, j + 3) == opponent_symbol)
-                    && (board.getPiece(i, j + 4) == opponent_symbol)) {
+                        && (board.getPiece(i, j + 2) == ' ') && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == opponent_symbol)) {
                     board.setPiece(i, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i, j + 1) == ' ')
-                    && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
-                    && (board.getPiece(i, j + 4) == opponent_symbol)) {
+                } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i, j + 1) == ' ')
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == opponent_symbol)) {
                     board.setPiece(i, j + 1, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == opponent_symbol)
-                    && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
-                    && (board.getPiece(i, j + 4) == opponent_symbol)) {
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == opponent_symbol)
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == opponent_symbol)) {
                     board.setPiece(i, j, symbol);
                     return true;
                 }
             } else {
                 if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i, j + 1) == symbol)
-                    && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
-                    && (board.getPiece(i, j + 4) == ' ')) {
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == ' ')) {
                     board.setPiece(i, j + 4, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i, j + 1) == symbol)
-                    && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == ' ')
-                    && (board.getPiece(i, j + 4) == symbol)) {
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == ' ')
+                        && (board.getPiece(i, j + 4) == symbol)) {
                     board.setPiece(i, j + 3, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i, j + 1) == symbol)
-                    && (board.getPiece(i, j + 2) == ' ') && (board.getPiece(i, j + 3) == symbol)
-                    && (board.getPiece(i, j + 4) == symbol)) {
+                        && (board.getPiece(i, j + 2) == ' ') && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == symbol)) {
                     board.setPiece(i, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i, j + 1) == ' ')
-                    && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
-                    && (board.getPiece(i, j + 4) == symbol)) {
+                } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i, j + 1) == ' ')
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == symbol)) {
                     board.setPiece(i, j + 1, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == symbol)
-                    && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
-                    && (board.getPiece(i, j + 4) == symbol)) {
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == symbol)
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == symbol)) {
                     board.setPiece(i, j, symbol);
                     return true;
                 }
             }
         }
     }
-    //cout << "no row\n";
-    /* check forward 3 in a column*/
+    
+    /* check forward 5 in a column*/
     for (int i = 0; i < SIZE; i++) {//for all columns
-        for (int j = 0; j < SIZE - 4; j++) {//for all rows that can fit 3 symbol matches in a vertical line
+        for (int j = 0; j < SIZE - 4; j++) {//for all rows that can fit 5 symbol matches in a vertical line
             if (!attack) {
                 if ((board.getPiece(j, i) == opponent_symbol)&&(board.getPiece(j + 1, i) == opponent_symbol)
-                    && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
-                    && (board.getPiece(j + 4, i)) == ' ') {
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i)) == ' ') {
                     board.setPiece(j + 4, i, symbol);
                     return true;
                 } else if ((board.getPiece(j, i) == opponent_symbol)&&(board.getPiece(j + 1, i) == opponent_symbol)
-                    && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == ' ')
-                    && (board.getPiece(j + 4, i)) == opponent_symbol) {
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == ' ')
+                        && (board.getPiece(j + 4, i)) == opponent_symbol) {
                     board.setPiece(j + 3, i, symbol);
                     return true;
                 } else if ((board.getPiece(j, i) == opponent_symbol)&&(board.getPiece(j + 1, i) == opponent_symbol)
-                    && (board.getPiece(j + 2, i) == ' ') && (board.getPiece(j + 3, i) == opponent_symbol)
-                    && (board.getPiece(j + 4, i)) == opponent_symbol) {
+                        && (board.getPiece(j + 2, i) == ' ') && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i)) == opponent_symbol) {
                     board.setPiece(j + 2, i, symbol);
                     return true;
-                }else if ((board.getPiece(j, i) == opponent_symbol)&&(board.getPiece(j + 1, i) == ' ')
-                    && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
-                    && (board.getPiece(j + 4, i)) == opponent_symbol) {
+                } else if ((board.getPiece(j, i) == opponent_symbol)&&(board.getPiece(j + 1, i) == ' ')
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i)) == opponent_symbol) {
                     board.setPiece(j + 1, i, symbol);
                     return true;
-                }else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == opponent_symbol)
-                    && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
-                    && (board.getPiece(j + 4, i)) == opponent_symbol) {
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == opponent_symbol)
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i)) == opponent_symbol) {
                     board.setPiece(j, i, symbol);
                     return true;
                 }
             } else {
                 if ((board.getPiece(j, i) == symbol)&&(board.getPiece(j + 1, i) == symbol)
-                    && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
-                    && (board.getPiece(j + 4, i)) == ' ') {
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i)) == ' ') {
                     board.setPiece(j + 4, i, symbol);
                     return true;
                 } else if ((board.getPiece(j, i) == symbol)&&(board.getPiece(j + 1, i) == symbol)
-                    && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == ' ')
-                    && (board.getPiece(j + 4, i)) == symbol) {
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == ' ')
+                        && (board.getPiece(j + 4, i)) == symbol) {
                     board.setPiece(j + 3, i, symbol);
                     return true;
                 } else if ((board.getPiece(j, i) == symbol)&&(board.getPiece(j + 1, i) == symbol)
-                    && (board.getPiece(j + 2, i) == ' ') && (board.getPiece(j + 3, i) == symbol)
-                    && (board.getPiece(j + 4, i)) == symbol) {
+                        && (board.getPiece(j + 2, i) == ' ') && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i)) == symbol) {
                     board.setPiece(j + 2, i, symbol);
                     return true;
-                }else if ((board.getPiece(j, i) == symbol)&&(board.getPiece(j + 1, i) == ' ')
-                    && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
-                    && (board.getPiece(j + 4, i)) == symbol) {
+                } else if ((board.getPiece(j, i) == symbol)&&(board.getPiece(j + 1, i) == ' ')
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i)) == symbol) {
                     board.setPiece(j + 1, i, symbol);
                     return true;
-                }else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == symbol)
-                    && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
-                    && (board.getPiece(j + 4, i)) == symbol) {
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == symbol)
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i)) == symbol) {
                     board.setPiece(j, i, symbol);
                     return true;
                 }
             }
         }
     }
-    //cout << "no col\n";
-    /*check 3 in backslash diagonals */
-    for (int i = 0; i < SIZE - 4; i++) {//for all rows that can fit 3 symbol matches in a backslash diagonal line.
-        for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 3 symbol matches in backslash diagonal line.
+
+    /*check 5 in backslash diagonals */
+    for (int i = 0; i < SIZE - 4; i++) {//for all rows that can fit 5 symbol matches in a backslash diagonal line.
+        for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 5 symbol matches in backslash diagonal line.
             if (!attack) {
                 if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i + 4, j + 4)) == ' ') {
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4)) == ' ') {
                     board.setPiece(i + 4, j + 4, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == ' ')
-                    && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == ' ')
+                        && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i + 3, j + 3, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i + 2, j + 2) == ' ') && (board.getPiece(i + 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
+                        && (board.getPiece(i + 2, j + 2) == ' ') && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i + 2, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i + 1, j + 1) == ' ')
-                    && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
+                } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i + 1, j + 1) == ' ')
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i + 2, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i + 2, j + 2, symbol);
                     return true;
                 }
             } else {
                 if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i + 1, j + 1) == symbol)
-                    && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
-                    && (board.getPiece(i + 4, j + 4)) == ' ') {
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4)) == ' ') {
                     board.setPiece(i + 4, j + 4, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i + 1, j + 1) == symbol)
-                    && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == ' ')
-                    && (board.getPiece(i + 4, j + 4)) == symbol) {
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == ' ')
+                        && (board.getPiece(i + 4, j + 4)) == symbol) {
                     board.setPiece(i + 3, j + 3, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i + 1, j + 1) == symbol)
-                    && (board.getPiece(i + 2, j + 2) == ' ') && (board.getPiece(i + 3, j + 3) == symbol)
-                    && (board.getPiece(i + 4, j + 4)) == symbol) {
+                        && (board.getPiece(i + 2, j + 2) == ' ') && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4)) == symbol) {
                     board.setPiece(i + 2, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i + 1, j + 1) == ' ')
-                    && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
-                    && (board.getPiece(i + 4, j + 4)) == symbol) {
+                } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i + 1, j + 1) == ' ')
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4)) == symbol) {
                     board.setPiece(i + 1, j + 1, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == symbol)
-                    && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
-                    && (board.getPiece(i + 4, j + 4)) == symbol) {
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == symbol)
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4)) == symbol) {
                     board.setPiece(i, j, symbol);
                     return true;
                 }
@@ -213,60 +214,60 @@ bool playAttackOrDefence(char symbol, Board& board, bool attack) {
         }
     }
     //cout << "no back\n";
-    /*check 3 in a forwardslash diagonals*/
-    for (int i = 2; i < SIZE; i++) {//for all rows that can fit 3 symbol matches in a forwardslash diagonal line.
-        for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 3 symbol matches in a forwardslash diagonal line.
+    /*check 5 in a forwardslash diagonals*/
+    for (int i = 2; i < SIZE; i++) {//for all rows that can fit 5 symbol matches in a forwardslash diagonal line.
+        for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 5 symbol matches in a forwardslash diagonal line.
             if (!attack) {
                 if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i - 4, j + 4)) == ' ') {
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4)) == ' ') {
                     board.setPiece(i - 4, j + 4, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == ' ')
-                    && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == ' ')
+                        && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i - 3, j + 3, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
-                    && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
+                        && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i - 2, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i - 1, j + 1) == ' ')
-                    && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
+                } else if ((board.getPiece(i, j) == opponent_symbol)&&(board.getPiece(i - 1, j + 1) == ' ')
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i - 1, j + 1, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == ' ')
-                    && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == opponent_symbol)
-                    && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4)) == opponent_symbol) {
                     board.setPiece(i, j, symbol);
                     return true;
                 }
             } else {
                 if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i - 1, j + 1) == symbol)
-                    && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
-                    && (board.getPiece(i - 4, j + 4)) == ' ') {
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4)) == ' ') {
                     board.setPiece(i - 4, j + 4, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i - 1, j + 1) == symbol)
-                    && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == ' ')
-                    && (board.getPiece(i - 4, j + 4)) == symbol) {
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == ' ')
+                        && (board.getPiece(i - 4, j + 4)) == symbol) {
                     board.setPiece(i - 3, j + 3, symbol);
                     return true;
                 } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i - 1, j + 1) == symbol)
-                    && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == symbol)
-                    && (board.getPiece(i - 4, j + 4)) == symbol) {
+                        && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4)) == symbol) {
                     board.setPiece(i - 2, j + 2, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i - 1, j + 1) == ' ')
-                    && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
-                    && (board.getPiece(i - 4, j + 4)) == symbol) {
+                } else if ((board.getPiece(i, j) == symbol)&&(board.getPiece(i - 1, j + 1) == ' ')
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4)) == symbol) {
                     board.setPiece(i - 1, j + 1, symbol);
                     return true;
-                }else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == ' ')
-                    && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == symbol)
-                    && (board.getPiece(i - 4, j + 4)) == symbol) {
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == symbol)
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4)) == symbol) {
                     board.setPiece(i, j, symbol);
                     return true;
                 }
@@ -274,20 +275,243 @@ bool playAttackOrDefence(char symbol, Board& board, bool attack) {
 
         }
     }
-    //cout << "no forw\n";
+    return false;
+}
+
+bool forkAttackOrDefence(char symbol, Board& board, bool attack) {
+    char opponent_symbol;
+    if (!attack) {
+        if (symbol == 'X') opponent_symbol = 'O';
+        else opponent_symbol = 'X';
+    }
+
+    /* check fork in a row*/
+    for (int i = 0; i < SIZE; i++) {//for all rows
+        for (int j = 0; j < SIZE - 5; j++) {//for all columns
+            if (!attack) {
+                if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == opponent_symbol)
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == ' ') && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 4, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == opponent_symbol)
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == ' ')
+                        && (board.getPiece(i, j + 4) == opponent_symbol) && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 3, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == opponent_symbol)
+                        && (board.getPiece(i, j + 2) == ' ') && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == opponent_symbol) && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 2, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == ' ')
+                        && (board.getPiece(i, j + 2) == opponent_symbol) && (board.getPiece(i, j + 3) == opponent_symbol)
+                        && (board.getPiece(i, j + 4) == opponent_symbol) && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 1, symbol);
+                    return true;
+                }
+            } else {
+                if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == symbol)
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == ' ') && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 4, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == symbol)
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == ' ')
+                        && (board.getPiece(i, j + 4) == symbol) && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 3, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == symbol)
+                        && (board.getPiece(i, j + 2) == ' ') && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == symbol) && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 2, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i, j + 1) == ' ')
+                        && (board.getPiece(i, j + 2) == symbol) && (board.getPiece(i, j + 3) == symbol)
+                        && (board.getPiece(i, j + 4) == symbol) && (board.getPiece(i, j + 5) == ' ')) {
+                    board.setPiece(i, j + 1, symbol);
+                    return true;
+                }
+            }
+        }
+    }
+
+    /* check fork in a column*/
+    for (int i = 0; i < SIZE; i++) {//for all columns
+        for (int j = 0; j < SIZE - 5; j++) {//for all rows 
+            if (!attack) {
+                if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == opponent_symbol)
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i) == ' ') && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 4, i, symbol);
+                    return true;
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == opponent_symbol)
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == ' ')
+                        && (board.getPiece(j + 4, i) == opponent_symbol) && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 3, i, symbol);
+                    return true;
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == opponent_symbol)
+                        && (board.getPiece(j + 2, i) == ' ') && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i) == opponent_symbol) && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 2, i, symbol);
+                    return true;
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == ' ')
+                        && (board.getPiece(j + 2, i) == opponent_symbol) && (board.getPiece(j + 3, i) == opponent_symbol)
+                        && (board.getPiece(j + 4, i) == opponent_symbol) && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 1, i, symbol);
+                    return true;
+                }
+            } else {
+                if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == symbol)
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i) == ' ') && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 4, i, symbol);
+                    return true;
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == symbol)
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == ' ')
+                        && (board.getPiece(j + 4, i) == symbol) && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 3, i, symbol);
+                    return true;
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == symbol)
+                        && (board.getPiece(j + 2, i) == ' ') && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i) == symbol) && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 2, i, symbol);
+                    return true;
+                } else if ((board.getPiece(j, i) == ' ')&&(board.getPiece(j + 1, i) == ' ')
+                        && (board.getPiece(j + 2, i) == symbol) && (board.getPiece(j + 3, i) == symbol)
+                        && (board.getPiece(j + 4, i) == symbol) && (board.getPiece(j + 5, i) == ' ')) {
+                    board.setPiece(j + 1, i, symbol);
+                    return true;
+                }
+            }
+        }
+    }
+
+    /*check fork in backslash diagonals */
+    for (int i = 0; i < SIZE - 5; i++) {//for all rows
+        for (int j = 0; j < SIZE - 5; j++) {//for all columns
+            if (!attack) {
+                if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4) == ' ') && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 4, j + 4, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == ' ')
+                        && (board.getPiece(i + 4, j + 4) == opponent_symbol) && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 3, j + 3, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i + 2, j + 2) == ' ') && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4) == opponent_symbol) && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 2, j + 2, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == ' ')
+                        && (board.getPiece(i + 2, j + 2) == opponent_symbol) && (board.getPiece(i + 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i + 4, j + 4) == opponent_symbol) && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 2, j + 2, symbol);
+                    return true;
+                }
+            } else {
+                if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == symbol)
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4) == ' ') && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 4, j + 4, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == symbol)
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == ' ')
+                        && (board.getPiece(i + 4, j + 4) == symbol) && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 3, j + 3, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == symbol)
+                        && (board.getPiece(i + 2, j + 2) == ' ') && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4) == symbol) && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 2, j + 2, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i + 1, j + 1) == ' ')
+                        && (board.getPiece(i + 2, j + 2) == symbol) && (board.getPiece(i + 3, j + 3) == symbol)
+                        && (board.getPiece(i + 4, j + 4) == symbol) && (board.getPiece(i + 5, j + 5) == ' ')) {
+                    board.setPiece(i + 1, j + 1, symbol);
+                    return true;
+                }
+            }
+        }
+    }
+    
+    /*check fork in a forwardslash diagonals*/
+    for (int i = 2; i < SIZE; i++) {//for all rows
+        for (int j = 0; j < SIZE - 5; j++) {//for all columns
+            if (!attack) {
+                if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4) == ' ') && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 4, j + 4, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == ' ')
+                        && (board.getPiece(i - 4, j + 4) == opponent_symbol) && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 3, j + 3, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == opponent_symbol)
+                        && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4) == opponent_symbol) && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 2, j + 2, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == ' ')
+                        && (board.getPiece(i - 2, j + 2) == opponent_symbol) && (board.getPiece(i - 3, j + 3) == opponent_symbol)
+                        && (board.getPiece(i - 4, j + 4) == opponent_symbol) && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 1, j + 1, symbol);
+                    return true;
+                }
+            } else {
+                if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == symbol)
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4) == ' ') && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 4, j + 4, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == symbol)
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == ' ')
+                        && (board.getPiece(i - 4, j + 4) == symbol) && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 3, j + 3, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == symbol)
+                        && (board.getPiece(i - 2, j + 2) == ' ') && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4) == symbol) && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 2, j + 2, symbol);
+                    return true;
+                } else if ((board.getPiece(i, j) == ' ')&&(board.getPiece(i - 1, j + 1) == ' ')
+                        && (board.getPiece(i - 2, j + 2) == symbol) && (board.getPiece(i - 3, j + 3) == symbol)
+                        && (board.getPiece(i - 4, j + 4) == symbol) && (board.getPiece(i - 5, j + 5) == ' ')) {
+                    board.setPiece(i - 1, j + 1, symbol);
+                    return true;
+                }
+            }
+        }
+    }
     return false;
 }
 
 //My rule based strategy
 void playAndilesStrategy(char symbol, Board& board) {
-    //cout << "Playing Andile's Strategy" << endl;
-    //flag move made
+    //flag move made - play winning move (RULE 1))
     bool move_made = playAttackOrDefence(symbol, board, true);
-    //cout << (move_made ? "Win" : "No Win") << endl;
+    
+    //defend opponent's winning move (RULE 2))
     if (!move_made) {
         move_made = playAttackOrDefence(symbol, board, false);
-        //cout << (move_made ? "Blocked" : "Not Blocked") << endl;
     }
+    
+    //play fork move (RULE 3))
+    if(!move_made){
+        move_made = forkAttackOrDefence(symbol, board, true);
+    }
+    
+    //defend opponent's fork move (RULE 4))
+    if(!move_made){
+        move_made = forkAttackOrDefence(symbol, board, false);
+    }
+    
+    //play best move (RULE 5))
     if (!move_made) {
         playRandomStrategy(symbol, board);
     }
@@ -464,7 +688,7 @@ void MiniBovo::start() {
     //random number generator used to determine next board position to play
     unsigned int seed = time(NULL); //remember seed
     srand(seed); //apply seed	
-    
+
     while (!complete()) {//game loop
         sleep(1); // wait 1 second 
         timer++;
@@ -495,9 +719,9 @@ void MiniBovo::play() {
 bool MiniBovo::complete() {
     if (!began)
         return false;
-    if (winner() != 'N'){ //@TODO: make winner attribute to improve efficiency.
+    if (winner() != 'N') { //@TODO: make winner attribute to improve efficiency.
         return true;
-}
+    }
     return boardFull(); //@TODO: make boardFull attribute to improve efficiency.
 }
 
@@ -519,21 +743,21 @@ char MiniBovo::winner() {
     //check rows
     for (int i = 0; i < SIZE; i++) {//for all rows
         for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 3 symbol matches in a horizontal line
-            if ( (board.getPiece(i, j) != ' ') && (board.getPiece(i, j) == board.getPiece(i, j + 1)) 
-                && (board.getPiece(i, j) == board.getPiece(i, j + 2)) && (board.getPiece(i, j) ==
-                 board.getPiece(i, j + 3)) && (board.getPiece(i, j) == board.getPiece(i, j + 4)) ) {
-                 cout << "Wining Positions: " << i << ", " << j << ": " << j+1 << ", " << j+2 << ", "<< j+3 << ", "<< j+4 << endl;
-                 cout << board.getPiece(i, j+4) << endl;
-return board.getPiece(i, j);
+            if ((board.getPiece(i, j) != ' ') && (board.getPiece(i, j) == board.getPiece(i, j + 1))
+                    && (board.getPiece(i, j) == board.getPiece(i, j + 2)) && (board.getPiece(i, j) ==
+                    board.getPiece(i, j + 3)) && (board.getPiece(i, j) == board.getPiece(i, j + 4))) {
+                cout << "Wining Positions: " << i << ", " << j << ": " << j + 1 << ", " << j + 2 << ", " << j + 3 << ", " << j + 4 << endl;
+                cout << board.getPiece(i, j + 4) << endl;
+                return board.getPiece(i, j);
             }
         }
     }
     //check columns
     for (int i = 0; i < SIZE; i++) {//for all columns
         for (int j = 0; j < SIZE - 4; j++) {//for all rows that can fit 3 symbol matches in a vertical line
-            if ( (board.getPiece(j, i) != ' ') && (board.getPiece(j, i) == board.getPiece(j + 1, i)) && 
-                (board.getPiece(j, i) == board.getPiece(j + 2, i) ) && (board.getPiece(j, i) == board.getPiece(j + 3, i) )
-                 && (board.getPiece(j, i) == board.getPiece(j + 4, i))) {
+            if ((board.getPiece(j, i) != ' ') && (board.getPiece(j, i) == board.getPiece(j + 1, i)) &&
+                    (board.getPiece(j, i) == board.getPiece(j + 2, i)) && (board.getPiece(j, i) == board.getPiece(j + 3, i))
+                    && (board.getPiece(j, i) == board.getPiece(j + 4, i))) {
                 cout << "Position cols: " << endl;
                 return board.getPiece(j, i);
             }
@@ -543,10 +767,10 @@ return board.getPiece(i, j);
     //check backslash diagonals
     for (int i = 0; i < SIZE - 4; i++) {//for all rows that can fit 3 symbol matches in a backslash diagonal line.
         for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 3 symbol matches in backslash diagonal line.
-            if ((board.getPiece(i, j) != ' ')&&(board.getPiece(i, j) == board.getPiece(i + 1, j + 1)) && (board.getPiece(i, j) == board.getPiece(i + 2, j + 2)) 
-                && (board.getPiece(i, j) == board.getPiece(i + 3, j + 3)) && (board.getPiece(i, j) == board.getPiece(i + 4, j + 4))) {
-cout << "Position back: " << endl;                
-return board.getPiece(i, j);
+            if ((board.getPiece(i, j) != ' ')&&(board.getPiece(i, j) == board.getPiece(i + 1, j + 1)) && (board.getPiece(i, j) == board.getPiece(i + 2, j + 2))
+                    && (board.getPiece(i, j) == board.getPiece(i + 3, j + 3)) && (board.getPiece(i, j) == board.getPiece(i + 4, j + 4))) {
+                cout << "Position back: " << endl;
+                return board.getPiece(i, j);
             }
         }
     }
@@ -554,10 +778,10 @@ return board.getPiece(i, j);
     //check forwardslash diagonals	
     for (int i = 2; i < SIZE; i++) {//for all rows that can fit 3 symbol matches in a forwardslash diagonal line.
         for (int j = 0; j < SIZE - 4; j++) {//for all columns that can fit 3 symbol matches in a forwardslash diagonal line.
-            if ((board.getPiece(i, j) != ' ')&&(board.getPiece(i, j) == board.getPiece(i - 1, j + 1))&&(board.getPiece(i, j) == board.getPiece(i - 2, j + 2)) 
-                && board.getPiece(i, j) == board.getPiece(i - 3, j + 3) && board.getPiece(i, j) == board.getPiece(i - 4, j + 4)) {
-cout << "Position forw: " << endl;                
-return board.getPiece(i, j);
+            if ((board.getPiece(i, j) != ' ')&&(board.getPiece(i, j) == board.getPiece(i - 1, j + 1))&&(board.getPiece(i, j) == board.getPiece(i - 2, j + 2))
+                    && board.getPiece(i, j) == board.getPiece(i - 3, j + 3) && board.getPiece(i, j) == board.getPiece(i - 4, j + 4)) {
+                cout << "Position forw: " << endl;
+                return board.getPiece(i, j);
             }
         }
     }
