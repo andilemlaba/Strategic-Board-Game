@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
 
     // create and show your widgets here
     // Lets see what happens
+// Senzo got this right
 
     return app.exec();
 }
