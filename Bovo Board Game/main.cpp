@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     // create and show your widgets here
-    // init
+    // Lets see what happens
 
     return app.exec();
 }
