@@ -19,7 +19,7 @@ CCC=g++
 CXX=g++
 FC=gfortran
 AS=as
-QMAKE=qmake.exe
+QMAKE=qmake
 
 # Macros
 CND_PLATFORM=MinGW-Windows
