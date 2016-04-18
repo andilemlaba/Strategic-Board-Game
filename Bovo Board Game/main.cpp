@@ -6,6 +6,7 @@
  */
 
 #include <QApplication>
+#include "MiniBovo.hpp"
 
 int main(int argc, char *argv[]) {
     // initialize resources, if needed
@@ -13,9 +14,8 @@ int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
 
-    // create and show your widgets here
-    // Lets see what happens
-// Senzo got this right
+    MiniBovo game; //create game instance.
+    game.start(); //setup then play game to completion.
 
-    return app.exec();
+    return 0;
 }
