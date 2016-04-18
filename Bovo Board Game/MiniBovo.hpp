@@ -8,7 +8,7 @@
 #include <unistd.h> 
 using namespace std;
 
-#define SIZE 22
+#define SIZE 10
 
 //structure to represent board position,needs validation
 
